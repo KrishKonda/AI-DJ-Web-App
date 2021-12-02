@@ -11,7 +11,7 @@ function setup(){
     canvas.center();
     video=createCapture(VIDEO);
     video.hide();
-    posenet=ml5.poseNet(video,modelLoaded);
+    posenet=ml5.poseNet(video, modelLoaded);
     posenet.on('pose',gotPoses);
 }
 function draw(){
@@ -26,12 +26,12 @@ function modelLoaded(){
     console.log("Posenet is initialized");
 }
 function gotPoses(results){
-    if(results>0){
+    if(results.length>0){
         console.log(results);
         leftWristX=results[0].pose.leftWrist.x;
         leftWristY=results[0].pose.leftWrist.y;
         rightWristX=results[0].pose.rightWrist.x;
-        rightWristY=results[0].pose.righhtWrist.y;
+        rightWristY=results[0].pose.rightWrist.y;
         console.log("leftWristX="+leftWristX+",leftWristY="+leftWristY);
         console.log("rightWristX="+rightWristX+",rightWristY="+rightWristY);
     }
